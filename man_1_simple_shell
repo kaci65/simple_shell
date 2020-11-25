@@ -1,0 +1,50 @@
+.TH man_1_simple_shell "25 November 2020" "0.01" "hsh man page"                                                                                                   .SH NAME                                                                                                                                                         
+.B SShell - simple UNIX command execution program                                                                                                                   
+.SH SYNOPSIS                                                                                                                                                       
+
+Usage: SShell [filename]
+
+.SH Description                                                                                                                                                     
+SShell is a simple UNIX command interpreter that reads commands from either a file or standard input and executes them.                                            
+
+.B Invocation                                                                                                                                                           
+This simple shell and handles programming and command errors differently (as described below). When command line arguments are supplied, dim treats argument 0 as a fil\
+\e from which to read commands, and the remaining arguments are set as the positional parameters of the shell. Otherwise, the shell reads commands from its standard in\
+put\.                                                                                                                                                               
+.br                                                                                                                                                                 
+The command line should contain one command per line as the shell runs each of the commands in order before exiting.                                                    
+                                                                                                                                                                   
+.B Command Execution                                                                                                                                                
+.br                                                                                                                                                                     
+After receiving a command, SShell tokenizes it into words using " /;" as delimiters. The first word is considered the command and all remaining words are considered ar\
+gum\ents to that command.                                                                                                                                          .RS                                                                                                                                                                     
+1. If the first character of the command is neither a slash (\\) nor dot (.), the shell searches for it in the list of shell builtins.                                  
+If there exists a shell builtin by that name, the builtin is invoked.                                                                                                   
+.RE                                                                                                                                                                .RS                                                                                                                                                                     
+2. If the first character of the command is none of a slash (\\), dot (.\), nor builtin, SShell searches each element of the                                            
+PATH environmental variable for a directory containing an executable file by that name.                                                                                 
+.RE                                                                                                                                                                .RS                                                                                                                                                                     
+3. If the first character of the command is a slash (\\) or dot (.) or either of the above searches was successful,                                                     
+the shell executes the named program with any remaining arguments given in a separate execution environment.                                                            
+.RE                                                                                                                                                                .B SShell Builtin Commands                                                                                                                                         .RE                                                                                                                                                                                                                                                                                                                               
+.B exit                                                                  
+.RS                                                                      
+Usage: exit (status) where status is an integer used to exit the shell.  
+Exits the shell.                                                         
+If no argument is given, the command is interpreted as exit 0.           
+.RE                                                                      
+                                                                         
+.B env                                                                   
+.RS                                                                      
+Usage: env                                                               
+Prints the current environment.                                          
+.RE                                                                      
+                                                                         
+.SH SEE ALSO                                                             
+execve(2), exit(3), fork(2), free(3), malloc(3), sh(1), wait(2),         
+                                                                         
+SShell emulates the basic functionality of the sh shell.                     
+This man page borrows from the man pages sh(1).                          
+                                                                         
+.SH AUTHOR           
+ Wanjiku Karugi and Wendy Omondi. 
