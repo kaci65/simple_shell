@@ -8,23 +8,23 @@
  */
 int f_strcmp(char *s1, char *s2)
 {
-  int i;
-  int result;
+	int i;
+	int result;
 
-  for (i = 0; s1[i] != '\0'; i++)
-    {
-      if (s1[i] > s2[i])
+	for (i = 0; s1[i] != '\0'; i++)
 	{
-	  result = s1[i] - s2[i];
-	  return (result);
+		if (s1[i] > s2[i])
+		{
+			result = s1[i] - s2[i];
+			return (result);
+		}
+		else if (s1[i] < s2[i])
+		{
+			result = s1[i] - s2[i];
+			return (result);
+		}
 	}
-      else if (s1[i] < s2[i])
-	{
-	  result = s1[i] - s2[i];
-	  return (result);
-	}
-    }
-  return (0);
+	return (0);
 }
 
 /**
@@ -35,16 +35,16 @@ int f_strcmp(char *s1, char *s2)
  */
 char *f_strcopy(char *dest, char *src)
 {
-  int i;
+	int i;
 
-  i = 0;
-  while (src[i] != '\0')
-    {
-      dest[i] = src[i];
-      i++;
-    }
-  *(dest + i) = '\0';
-  return (dest);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	*(dest + i) = '\0';
+	return (dest);
 }
 
 /**
@@ -55,23 +55,23 @@ char *f_strcopy(char *dest, char *src)
  */
 char *f_strcat(char *dest, char *src)
 {
-  int i;
-  int j;
+	int i;
+	int j;
 
-  for (i = 0; dest[i] != '\0'; i++)
-    {
-    }
+	for (i = 0; dest[i] != '\0'; i++)
+	{
+	}
 
-  j = 0;
-  while (src[j] != '\0')
-    {
-      dest[i] = src[j];
-      i++;
-      j++;
-    }
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
 
-  dest[i] = '\0';
-  return (dest);
+	dest[i] = '\0';
+	return (dest);
 
 }
 
@@ -92,7 +92,7 @@ char *f_strcat(char *dest, char *src)
  */
 int f_putchar(char c)
 {
-  return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -102,12 +102,12 @@ int f_putchar(char c)
  */
 void f_putstr(char const *s)
 {
-  size_ti;
+	size_ti;
 
-  i = 0;
-  while (s[i])
-    {
-      f_putchar(s[i]);
-      i++;
-    }
+	i = 0;
+	while (s[i])
+	{
+		f_putchar(s[i]);
+		i++;
+	}
 }

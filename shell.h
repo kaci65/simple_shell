@@ -21,7 +21,7 @@ char **tokenize_line(char *arguments);
 /* int readnparse(void); */
 
 /* shell execution functions */
-int main(__attribute__((__unused__)) int argc, __attribute__((__unused__)) char *argv[]);
+nt main(__attribute__((__unused__)) int ac, __attribute__((__unused__)) char **av);
 void shell_prompt(void);
 void find_path(void);
 void loop_shell(char *line_cmd, char **tokens, int status);
