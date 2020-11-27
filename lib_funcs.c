@@ -28,51 +28,35 @@ int f_strcmp(char *s1, char *s2)
 }
 
 /**
- * f_strcopy - copies the string from pointer src to pointer dest
- * @dest: have src contents
- * @src: copy contents to dest
- * Return: Pointer to dest
+ * free_doublegrid - frees a double pointer
+ * @grid: double pointer to be freed
  */
-char *f_strcopy(char *dest, char *src)
-{
-	int i;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	*(dest + i) = '\0';
-	return (dest);
-}
+ void free_doublegrid(char **grid)
+ {
+	 int index;
 
-/**
- * f_strcat - concatenates two strings
- * @dest: string dest
- * @src: string to be appended
- * Return: pointer to destination string dest
+	 for (index = 0; grid[index]; index++)
+	 {
+		 free(grid[index]);
+	 }
+	 free(grid);
+ }
+
+ /**
+ * _strlen - returns the length of a string
+ * @s: receives variable s location
+ * Return: length of string of int
  */
-char *f_strcat(char *dest, char *src)
+int _strlen(char *s)
 {
-	int i;
-	int j;
+	int len = 0;
 
-	for (i = 0; dest[i] != '\0'; i++)
+	while (s[len] != '\0')
 	{
+		len++;
 	}
-
-	j = 0;
-	while (src[j] != '\0')
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-
-	dest[i] = '\0';
-	return (dest);
-
+	return (len);
 }
 
 /**
@@ -93,21 +77,4 @@ char *f_strcat(char *dest, char *src)
 int f_putchar(char c)
 {
 	return (write(1, &c, 1));
-}
-
-/**
- * f_putstr - displays the string s to the standard output
- * @s: string to be displayed
- * Return: Nothing
- */
-void f_putstr(char const *s)
-{
-	size_ti;
-
-	i = 0;
-	while (s[i])
-	{
-		f_putchar(s[i]);
-		i++;
-	}
 }

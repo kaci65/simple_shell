@@ -1,51 +1,33 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-/* header files */
+#define DELIMITERS " \n\r\t\a"
+
+/* headers used */
 #include <stdlib.h> /* free(), exit(), EXIT_SUCCESS, EXIT_FAILURE*/
-#include <unistd.h> /* execve, fork(), pid_t, isatty */
-#include <stdio.h> /*perror(), stderr() */
+#include <unistd.h> /* isatty */
+#include <stdio.h> /* perror */
 #include <sys/wait.h> /* waitpid */
 #include <string.h> /* strtok() */
 
-/* my library functions */
-int f_strcmp(char *s1, char *s2);
-char *f_strcopy(char *dest, char *src);
-char *f_strcat(char *dest, char *src);
-int f_putchar(char c);
-void f_putstr(char const *s);
-
-/* line functions */
-char *read_line(void);
-char **tokenize_line(char *arguments);
-/* int readnparse(void); */
-
-/* shell execution functions */
-nt main(__attribute__((__unused__)) int ac, __attribute__((__unused__)) char **av);
+/* main shell functions */
+int main (__attribute__((__unused__)) int ac, char *av[]);
 void shell_prompt(void);
-void find_path(void);
-void loop_shell(char *line_cmd, char **tokens, int status);
-int executor(char **arguments);
+char *read_line(void);
+void print_env (char **environ);
 int forkd(char **str_args);
+int err_msg(void);
 
-/* signal function */
-void sigint_helper(__attribute__((__unused__)) int i);
-
-/* PATH function */
-int _process(char **args);
+/* helper functions/ lib functions */
+int f_strcmp(char *s1, char *s2);
+void free_doublegrid(char **grid);
+int _strlen(char *s);
+int f_putchar(char c);
 
 /* environ prototype */
 extern char **environ;
 
-/* global variables */
-char pwd[1024];
-char PATH[1024];
-
-/* builtins */
-int pwd_cmd(char **arguments);
-int exit_cmd(char **arguments);
-
-/* shell commands */
-int f_clear(void);
+/* signal function */
+void sigint_helper(__attribute__((__unused__)) int i);
 
 #endif /* #ifndef SHELL_H */

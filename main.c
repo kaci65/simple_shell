@@ -1,22 +1,46 @@
 #include "shell.h"
 
-/**
- * main - Entry point
- * @ac: unused argument count
- * @av: unused argument vector
- * Return: 0 if successful
- */
-int main(__attribute__((__unused__)) int ac, __attribute__((__unused__)) char **av)
+int main (int ac, char *av[])
 {
-	char pwd[1024];
-	char PATH[1024];
+    char *line_cmd;
 
-	getcwd(pwd, sizeof(pwd)); /* present working directory */
-	f_strcopy(PTH, PWD); /* find commands */
+    while (1)
+    {
+        shell_prompt();
+        line_cmd = read_line();
 
-	/* concatenate commands in directory with path to get full path */
-	f_strcat(PATH, "/shell_cmds/");
+        if (!line_cmd)
+        {
+            exit(EXIT_SUCCESS);
+        }
+    
+        if (f_strcmp(line_cmd, " ") == 0)
+        {
+            free(line_cmd);
+            continue;
+        }
+        if (f_strcmp(line_cmd, "exit\n") == 0)
+        {
+            free(line_cmd);
+            break;
+        }
+        free(line_cmd);
+    }
+    shell_prompt();
+    return (0);
+}
 
-	loop_shell();
-	return (0);
+/**
+ * shell_prompt - writes to stdout prompt string PS1
+ * isatty tests whether fd ->file descriptor is associated
+ * terminal device. The function evaluates if this is found to
+ * be true
+ * Return: Nothing
+ */
+void shell_prompt(void)
+{
+    if (isatty(STDIN_FILENO))
+    {
+        write(STDOUT_FILENO, "$ ", 2);
+    }
 }
