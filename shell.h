@@ -18,6 +18,7 @@ void print_env(char **environ);
 int forkd(char **str_args);
 int err_msg(void);
 char *path(char *command, char *fullpath, char *path);
+char **tokenize_line(char *arguments);
 
 /* helper functions/ lib functions */
 int f_strcmp(char *s1, char *s2);
