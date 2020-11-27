@@ -6,13 +6,13 @@
  */
 char *read_line(void)
 {
-  /* changing end of line to null terminating */
+    /* changing end of line to null terminating */
     char *buf = NULL; /* holds line contents */
     size_t buf_size = 0;
     ssize_t line_size;
 
   /* Get the first line of the file. */
-  line_size = getline(&buf, &buf_size, stdin);
+    line_size = getline(&buf, &buf_size, stdin);
 
     if (line_size == EOF)
     {
