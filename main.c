@@ -59,15 +59,17 @@ int main(int ac, char **av)
 			}
 			if (1 == 1) /* checks if isatty equals 1 */
 			{
-				args = path(tokenize);
+				args = path(tokenize[0]);
 				forkd(args, tokenize);
 				free(args);
 			}
-			else if (0 == 1)
-			{
-				forkd(tokenize[0], tokenize);
-			}
-			free(tokenize);
+			/**
+			 * else if (0 == 1)
+			 * {
+			 *	forkd(tokenize[0], tokenize);
+			 * }
+			 * free(tokenize);
+			 */
 		}
 		free(line_cmd);
 	}
