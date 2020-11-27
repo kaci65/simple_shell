@@ -6,8 +6,8 @@
  */
 int err_msg(void)
 {
-    write(STDOUT_FILENO, "execve failure", 3);
-    f_putchar("\n");
+	write(STDOUT_FILENO, "function fail", 12);
+	f_putchar('\n');
 
-    return (0);
+	return (0);
 }

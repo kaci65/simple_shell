@@ -32,18 +32,18 @@ int f_strcmp(char *s1, char *s2)
  * @grid: double pointer to be freed
  */
 
- void free_doublegrid(char **grid)
- {
-	 int index;
+void free_doublegrid(char **grid)
+{
+	int index;
 
-	 for (index = 0; grid[index]; index++)
-	 {
-		 free(grid[index]);
-	 }
-	 free(grid);
- }
+	for (index = 0; grid[index]; index++)
+	{
+		free(grid[index]);
+	}
+	free(grid);
+}
 
- /**
+/**
  * _strlen - returns the length of a string
  * @s: receives variable s location
  * Return: length of string of int
@@ -77,4 +77,24 @@ int _strlen(char *s)
 int f_putchar(char c)
 {
 	return (write(1, &c, 1));
+}
+
+/**
+ * _strcpy - copies the string from pointer src to pointer dest
+ * @dest: have src contents
+ * @src: copy contents to dest
+ * Return: Pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	*(dest + i) = '\0';
+	return (dest);
 }

@@ -8,21 +8,21 @@
  */
 int forkd(char **str_args)
 {
-    pid_t child_pid;
-    int wstatus;
+	pid_t child_pid;
+	int wstatus;
 
-    child_pid = fork;
-    if (child_pid == 0)
-    {
-        if (execve(str_args[0], args, environ) == -1)
-        {
-            err_msg();
-            exit(EXIT_FAILURE);
-        }
-        else
-        {
-            waitpid(&wstatus);
-        }
-        return (0);
-    }
+	child_pid = fork();
+	if (child_pid == 0)
+	{
+		if (execve(str_args[0], str_args, environ) == -1)
+		{
+			err_msg();
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			wait(&wstatus);
+		}
+	}
+	return (0);
 }
