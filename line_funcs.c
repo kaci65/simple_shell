@@ -6,6 +6,7 @@
  */
 char *read_line(void)
 {
+<<<<<<< HEAD
     /* changing end of line to null terminating */
     char *buf = NULL; /* holds line contents */
     size_t buf_size = 0;
@@ -22,6 +23,29 @@ char *read_line(void)
     }
 
   return (buf);
+=======
+char *buf = NULL; /* holds line contents */
+size_t buf_size = 0;
+ssize_t line_size;
+
+/* Get the first line of the file. */
+line_size = getline(&buf, &buf_size, stdin);
+
+if (line_size == EOF)
+{
+free(buf);
+exit(EXIT_SUCCESS);
+}
+
+fflush(stdin);
+
+/* Free the allocated line buffer */
+free(buf);
+/* changing end of line to null terminating */
+buf = NULL;
+
+return (buf);
+>>>>>>> 2edff05aa665739e83c8ded54c52f69eb42eec66
 }
 
 /**
@@ -31,6 +55,7 @@ char *read_line(void)
  */
 char **tokenize_line(char *arguments)
 {
+<<<<<<< HEAD
     int len = 0;
     int index = 0;
     char **cmd_line_toks;
@@ -74,3 +99,22 @@ char **tokenize_line(char *arguments)
 
     return (cmd_line_toks);
 }
+=======
+size_t num_toks;
+int index = 0;
+char **cmd_line_toks = malloc(sizeof(char *) * num_toks);
+char *cmd_line;
+
+cmd_line = strtok(arguments, " ");
+if (cmd_line != NULL)
+{
+cmd_line_toks[index] = cmd_line;
+index++;
+cmd_line = strtok(NULL, " ");
+}
+cmd_line_toks[index] = NULL;
+free(cmd_line_toks);
+
+return (cmd_line_toks);
+}
+>>>>>>> 2edff05aa665739e83c8ded54c52f69eb42eec66

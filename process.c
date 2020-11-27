@@ -7,24 +7,29 @@
  */
 int _process(char **args)
 {
-	pid_t child;
-	int status;
 
-	if (child == 0)
-	{
-		if (execve(args[0], args, environ) < 0)
-		{
-			f_putstr("command not found: %s\n", args[0]);
-			exit(EXIT_FAILURE);
-		}
-		else if (child < 0)
-		{
-			f_putstr("fork error\n");
-			sleep(3);
-		}
-		else
-			wait(&status);
+int pid;
+int child;
+int status;
 
-		return (0);
-	}
+child = fork();
+
+if (child == 0)
+{
+if (execvp(args[0], args) < 0)
+{
+write(1, "comand not found: %s\n", 17);
+exit(EXIT_FAILURE);
+}
+else if (child < 0)
+writef(1, "error forking\n", 14);
+
+sleep(3);
+}
+else
+{
+wait(&status);
+}
+return (1);
+
 }
