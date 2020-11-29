@@ -63,13 +63,6 @@ int main(int ac, char **av)
 				forkd(args, tokenize);
 				free(args);
 			}
-			/**
-			 * else if (0 == 1)
-			 * {
-			 *	forkd(tokenize[0], tokenize);
-			 * }
-			 * free(tokenize);
-			 */
 		}
 		free(line_cmd);
 	}
