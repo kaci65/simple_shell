@@ -46,5 +46,5 @@ Usage: env
 Prints the current environment.
 
 # **Authors**
-Wanjiku Karugi <w.karugi19@launchpad.com>
+kaci65 <kaci65@gmail.com>
 Wendy Omondi <w.omondi19@launchpad.com>
